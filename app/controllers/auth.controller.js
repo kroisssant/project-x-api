@@ -12,7 +12,6 @@ exports.signup = (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   });
-  console.log(req.body.profilePicUrl)
   user.save((err, user) => {
     if (err) {
       res.status(500).send({ message: err });

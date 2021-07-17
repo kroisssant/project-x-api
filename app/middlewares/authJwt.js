@@ -12,14 +12,15 @@ verifyToken = (req, res, next) => {
     }
 
     jwt.verify(token, config.secret, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({ message: "Unauthorized!" });
+        }
         if (id == decoded.id) {
             next()
         } else {
             return res.status(401).send({ message: "Unauthorized!" });
         }
-        if (err) {
-            return res.status(401).send({ message: "Unauthorized!" });
-        }
+        
     });
 };
 
@@ -53,13 +54,14 @@ isAdmin = (req, res, next) => {
     });
 };
 
-isModerator = (req, res, next) => {
-    User.findById(req.userId).exec((err, user) => {
-        if (err) {
+isProfesor = (req, res, next) => {
+    User.findById(req.headers["user-id"]).exec((err, user) => {
+        if (err) { 
             res.status(500).send({ message: err });
+            
             return;
         }
-
+        console.log(user)
         Role.find({
                 _id: { $in: user.roles }
             },
@@ -86,6 +88,6 @@ isModerator = (req, res, next) => {
 const authJwt = {
     verifyToken,
     isAdmin,
-    isModerator
+    isProfesor
 };
 module.exports = authJwt;

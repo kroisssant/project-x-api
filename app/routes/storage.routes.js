@@ -29,4 +29,5 @@ module.exports = function(app) {
     });
 
     app.post("/api/storage/profilePics", [authJwt.verifyToken], upload.single("file"))
+    app.get("/api/storage/profilePics/:id",controller.profilePic, [authJwt.verifyToken])
 };

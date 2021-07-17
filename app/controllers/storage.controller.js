@@ -1,18 +1,7 @@
-// //go to storege.routes.js for the controller
-// const multer = require('multer')
-//     // var storage = multer.diskStorage({
-//     //     destination: function(req, file, cb) {
-//     //         cb(null, 'uploads/profilepics/')
-//     //     },
-//     //     filename: function(req, file, cb) {
-//     //         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-//     //         cb(null, file.fieldname)
-//     //     }
-//     // })
+const path = require("path")
 
-// var upload = multer({ dest: 'uploads/' })
-
-// exports.profilePic = (req, res) => {
-//     console.log("yes")
-//     upload.single("img")
-// }
+exports.profilePic = (req, res) => {
+    id = req.params.id
+    console.log(id)
+    res.sendFile(path.join(__dirname + "../../../uploads/profilepics/60dccd831b4f3a08cc9c8a76.jpg"))
+}
