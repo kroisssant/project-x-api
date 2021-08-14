@@ -30,8 +30,20 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         res.status(400).send({ message: "Failed! Email is already in use!" });
         return;
       }
-
-      next();
+      User.findOne({
+        phone: req.body.phone
+      }).exec((err, user) => {
+        if(err){
+          res.send(500).send({message: err});
+          return
+        }
+  
+        if(user) {
+          res.status(400).send({message: "Failed! Phone is already in use!"})
+          return
+        }
+        next();
+      });
     });
   });
 };

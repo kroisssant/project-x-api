@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
-const Prof = mongoose.model(
-  "Prof",
+const Course = mongoose.model(
+  "Course",
   new mongoose.Schema({
     name: String,
-    user: {
+    teacher: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
+        ref: "Teacher"
+    } 
   })
 );
 
-module.exports = Prof;
+module.exports = Course;

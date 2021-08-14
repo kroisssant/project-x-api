@@ -6,6 +6,9 @@ const User = mongoose.model(
     username: String,
     email: String,
     password: String,
+    phone: String,
+    last_login_date: mongoose.Schema.Types.Date,
+    last_login_ip: String,
     profilePicUrl: String,
     roles: [
       {
@@ -13,7 +16,7 @@ const User = mongoose.model(
         ref: "Role"
       }
     ]
-  })
+  },  { strict: true })
 );
 
 module.exports = User;

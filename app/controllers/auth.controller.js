@@ -2,6 +2,7 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
+const CodeStore = db.codeStore
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -10,6 +11,8 @@ exports.signup = (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
+    phone: req.body.phone,
+    profilePicUrl: "http://localhost:8080/api/storage/profilePics/default", //TODO: TO BE SWITCH WHEN I PUT IT ON A SERVER
     password: bcrypt.hashSync(req.body.password, 8)
   });
   user.save((err, user) => {
@@ -107,3 +110,21 @@ exports.signin = (req, res) => {
       });
     });
 };
+
+exports.codeCheck= (req, res)=> {
+  console.log(req.body.code)
+  CodeStore.findOne({code: req.body.code}).exec((err, code) => {
+    if(err) {
+      res.status(500).send({message: err})
+      return
+    }
+    if(!code) {
+      res.status(404).send({message: "Code not found"})
+      return
+    }
+    if(code) {
+      res.status(200).send({code: req.body.code})
+      return
+    }
+  })
+}
