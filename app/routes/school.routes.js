@@ -10,6 +10,6 @@ module.exports = function(app) {
     next();
   });
 
-  app.post("/api/school/createElev", controller.createElev)
-  app.get("/api/school/getElev", controller.getElev)
-};
+  app.post("/api/auth/crateStudent", controller.createStudent) // after test this should be only for admins
+  // to do a get student function
+  };

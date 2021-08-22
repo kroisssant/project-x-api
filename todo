@@ -1,0 +1,37 @@
+1. Add the school in the api(to have a ref in student, techer, etc)
+2. Find a good color palet and a good idea for the ui, name and logo
+3. Make all the featrues
+ - grade store
+ - message between 2 or more person
+ - ads in the extraschool tab
+ - english and romanian
+ - statistics
+ - comunication between the parents and the teachers
+ - admin console
+ - maybe a free version but with ads
+ - a tab where will be all the materials for the students to learn the lessons again for maybe univerity teachers
+ - maybe more
+4. Finish the login thing
+ - admin can make students
+ -done- students are linked with a code -this will be done by an admin-
+ -done- the students are linked with a user -this will happen when the student is singin up with the code-
+ -semi- the techer are linked with a user -the teachers will be created by the admins- -TODO when a teacher singin for the first time will be asked to swith it passowrod-
+ - add a forget password thing
+5. Finish the api
+6. Finish the ui
+7. Fix all the ui bugs
+8. Make a sugestion forum
+9. Make a public api
+ - make a portal ti generate a token linked to the student or the techer 
+ - acces to all the messages that are in user box
+ - etc
+10. Make a payment method
+11. Find the best price per student(PROFIT + PARENT + DRIVE)
+
+
+
+
+
+
+
+

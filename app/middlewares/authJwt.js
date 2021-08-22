@@ -4,13 +4,15 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
+//here the jwt will be verified
 verifyToken = (req, res, next) => {
+    // taking the jwt form the header
     let token = req.headers["x-access-token"];
     let id = req.headers["user-id"]
     if (!token) {
         return res.status(403).send({ message: "No token provided!" });
     }
-
+    //verfing the jwt id with the id
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
             return res.status(401).send({ message: "Unauthorized!" });
@@ -24,6 +26,7 @@ verifyToken = (req, res, next) => {
     });
 };
 
+// this is for checking if the user is an admin or not
 isAdmin = (req, res, next) => {
     User.findById(req.userId).exec((err, user) => {
         if (err) {
@@ -54,6 +57,7 @@ isAdmin = (req, res, next) => {
     });
 };
 
+//this is no longer valid
 isProfesor = (req, res, next) => {
     User.findById(req.headers["user-id"]).exec((err, user) => {
         if (err) { 

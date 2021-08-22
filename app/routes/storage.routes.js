@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-
+// saving and sending the profile pics for now
 module.exports = function(app) {
     app.use(function(req, res, next) {
         res.header(

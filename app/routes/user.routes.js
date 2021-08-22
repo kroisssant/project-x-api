@@ -9,7 +9,7 @@ module.exports = function(app) {
     );
     next();
   });
-
+  // all the routes for mods, user and admins
   app.get("/api/test/all", controller.allAccess);
 
   app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);

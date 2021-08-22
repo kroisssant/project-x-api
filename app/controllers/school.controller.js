@@ -8,39 +8,33 @@ const Materie = db.materie
 const Prof = db.prof
 const School = db.school
 
-exports.createElev = (req, res) => {
-    const elev = new Elev({
-        nume: req.body.name,
-        user: req.body.id
+//here is the create student funtion for the admins
+exports.createStudent = (req, res) => {
+    const student = new Student({
+      user: null,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      parent: null
     });
-    elev.save()
-    const clasa = new Clasa({})
-    clasa.save()
-    const grade = new Grade({})
-    grade.save()
-    const homework = new Homework({})
-    homework.save()
-    const materie = new Materie({})
-    materie.save()
-    const prof = new Prof({})
-    prof.save()
-    const school = new School({})
-    school.save()
-    res.send("done")
-}
-
-exports.createClasa = (req, res) => {
-    const elev = new Elev({
-        nume: req.body.name,
-        user: req.body.id
-    });
-    elev.save()
-    res.send("done")
-}
-
-
-exports.getElev = (req, res) => {
-    Elev.findOne({user: req.body.id}, (err, elev)=>{
-        res.send(elev.id)
+    student.save((err, student) => {
+      if(err) {
+        return res.status(500).send({ message: err });
+      }
+      if(student) {
+        codeGen = Math.floor(Math.random() * Date.now())
+        const _code = new CodeStore({
+          student: student._id,
+          code: codeGen
+        })
+        _code.save((err, code) => {
+          if(err) {
+            return res.status(500).send({message: merr})
+          }
+          if(code) {
+            return res.status(200).send({code: code}) //here will be something like a phone message service
+          }
+        })
+      }
     })
-}
+   
+   }
