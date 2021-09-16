@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
 const db = require("../models");
-const Elev = db.elev;
-const Clasa = db.class
-const Grade =  db.grade
-const Homework = db.homwork
-const Materie = db.materie
-const Prof = db.prof
-const School = db.school
+const Student = db.student;
+const Classroom = db.classroom
+const Grade = db.grade  
+const Course =  db.course
+const Teacher = db.teacher 
+const CodeStore = db.codeStore 
+
 
 //here is the create student funtion for the admins
 exports.createStudent = (req, res) => {
@@ -35,6 +35,5 @@ exports.createStudent = (req, res) => {
           }
         })
       }
-    })
-   
-   }
+    }) 
+  }

@@ -3,6 +3,7 @@
 3. Make all the featrues
  - grade store
  - message between 2 or more person
+ - Homework
  - ads in the extraschool tab
  - english and romanian
  - statistics
@@ -33,5 +34,7 @@
 
 
 
+Here will be all the urls and the logic for them:
 
+1. /login -> login an user
 
